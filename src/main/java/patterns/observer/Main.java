@@ -5,13 +5,13 @@ import patterns.observer.subject.WeatherData;
 
 public class Main {
     public static void main(String[] args) {
-        WeatherData weatherData = new WeatherData();
-        CurrentConditionDisplay conditionDisplay = new CurrentConditionDisplay(weatherData);
+        WeatherData publisher = new WeatherData();
+        CurrentConditionDisplay subscriber = new CurrentConditionDisplay(publisher);
 
-        weatherData.setMeasurements(23, 50, 72);
-        weatherData.setMeasurements(24, 55, 72);
+        publisher.setMeasurements(23, 50, 72);
+        publisher.setMeasurements(24, 55, 72);
 
-        weatherData.removeObserver(conditionDisplay);
-        weatherData.setMeasurements(100, 100, 100);
+        publisher.removeObserver(subscriber);
+        publisher.setMeasurements(100, 100, 100);
     }
 }
